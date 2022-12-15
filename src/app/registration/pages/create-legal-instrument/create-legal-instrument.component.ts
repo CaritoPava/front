@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder,Validators } from '@angular/forms';
+import { FormGroup, FormBuilder,Validators ,FormControl} from '@angular/forms';
 import { LegalInstrumentServiceService } from '../../services/legal-instrument-service.service';
+import { ResonseMessage } from '../../interfaces/interfaces';
 
 interface DocumentTypes{
   id: number;
@@ -20,17 +21,43 @@ interface Microenterprise{
 })
 export class CreateLegalInstrumentComponent implements OnInit {
 
-  registerForm!:FormGroup;
+  public response:ResonseMessage = {message:"", code:""};
 
-//inyectar el servicio
+
   constructor(private fb: FormBuilder, private legalInstrumentService: LegalInstrumentServiceService) {};
 
 
+  registerForm:FormGroup = this.fb.group({
+    idTypeInstrument: ['', Validators.required],
+    idMicroenterprise: ['', Validators.required],
+    detail: ['', Validators.required, ],
+    rights: ['', Validators.required,],
+    plaintiffsRequest: ['', Validators.required, ],
+    fundamentalsMinistryLaw: ['', Validators.required],
+    ministryRequest: ['', Validators.required],
+    notifications: ['', Validators.required],
+    anexos: [false],
+ });
+
+
+ campIsValid(campo:string){
+   return this.registerForm.controls[campo].errors && this.registerForm.controls[campo].touched;
+ }
+
+// enviar datos del formulario
+
  addLegalInstrument(){
-    this.legalInstrumentService.addLegalInstrument()
+    this.legalInstrumentService.addLegalInstrument(this.registerForm.value)
     .subscribe(
-      (data) => {
-        console.log(data);
+      data => {
+        console.log(data, "data");
+        this.response.message = data.message;
+        this.response.code = data.code;
+      },
+      err => {
+        console.log(err, "err");
+        this.response.message = "Error al registrar el instrumento legal";
+        this.response.code = err.status;
       }
     )
 
@@ -38,49 +65,23 @@ export class CreateLegalInstrumentComponent implements OnInit {
 
 
 
-
-
-  // documentTypes: DocumentTypes[];
-
-  // selctedDocumentType: DocumentTypes;
-
-
-  // constructor() {
-  //   this.documentTypes = [
-  //     {id: 1, name: 'Acta de constitución'},
-  //     {id: 2, name: 'Acta de asamblea'},
-  //     {id: 3, name: 'Acta de elección de directiva'},
-  //     {id: 4, name: 'Acta de elección de revisor fiscal'},
-  //   ];
-
-  //   this.selctedDocumentType = this.documentTypes[0];
-
-
-  // }
-
-
-
-  ngOnInit(): void {
-    this.registerForm = this.initForm();
-  }
-
   onSumit(){
+    if(this.registerForm.invalid){
+      this.registerForm.markAllAsTouched();
+      return;
+    }
     console.log(this.registerForm.value);
     this.addLegalInstrument();
+    this.registerForm.reset();
+    this.response =  {message:"", code:""};
   }
 
-  initForm():FormGroup{
-  return this.fb.group({
-    documentType: ['', Validators.required],
-    microenterprise: ['', Validators.required],
-    detail: ['', Validators.required, Validators.maxLength(2)],
-    rights: ['', Validators.required,Validators.maxLength(200)],
-    plaintiffsRequest: ['', Validators.required, Validators.maxLength(200)],
-    fundamentalsMinistryLaw: ['', Validators.required,Validators.maxLength(200)],
-    ministryRequest: ['', Validators.required, Validators.maxLength(200)],
-    notifications: ['', Validators.required, Validators.maxLength(200)],
-    anexos: ['', Validators.required,Validators.maxLength(200)],
- });
+  ngOnInit(): void {
+    this.registerForm.reset({
+      anexos: false
+    });
+
+
   }
 
 
