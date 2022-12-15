@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { InfoGeneralComponent } from './barInfo/info-general/info-general.component';
 import { BarFooderComponent } from './fooder/bar-fooder/bar-fooder.component';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 
 
@@ -18,7 +19,8 @@ import { BarFooderComponent } from './fooder/bar-fooder/bar-fooder.component';
     BarFooderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    PrimeNgModule
   ]
 })
 export class SharedModule { }

@@ -1,1 +1,61 @@
-<p>create-legal-instrument works!</p>
+<form class="grid " (ngSubmit)="onSumit()" [formGroup]="registerForm">
+    <div class="col_6" [style]="{'width':'50%'}">
+        <div>
+            <div>
+                <label for="">Tipo de documento</label>
+            <!-- <p-dropdown [options]="documentTypes" [(ngModel)]="selctedDocumentType" optionLabel="name" optionValue="id" [style]="{'width':'40%'}"></p-dropdown> -->
+                <input type="number" pInputText />
+            </div>
+            <div>
+                <label for="">Nombre de la empresa</label>
+                <input type="number" pInputText />
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label for="">Detalle de echos</label>
+                <textarea pInputTextarea  [autoResize]="true" style="width: 80%" name="detail"  required formControlName="detail"></textarea>
+                <p-message severity="error" text="El campo es requerido" *ngIf="registerForm.get('detail')?.touched && registerForm.get('detail')?.errors?.['required'] "></p-message>
+            </div>
+            <div>
+                <label for="">Derechos presuntamente vulnerados</label>
+                <textarea pInputTextarea  [autoResize]="true" style="width: 80%" name="rights" required formControlName="rights"></textarea>
+                <p-message severity="error" text="El campo es requerido" *ngIf="registerForm.get('rights')?.touched && registerForm.get('rights')?.errors?.['required'] "></p-message>
+            </div>
+            <div>
+                <label for="">Peticiones del accionante</label>
+                <textarea pInputTextarea  [autoResize]="true" style="width: 80%" name="plaintiffsRequest" required formControlName="plaintiffsRequest"></textarea>
+                <p-message severity="error" text="El campo es requerido" *ngIf="registerForm.get('plaintiffsRequest')?.touched && registerForm.get('plaintiffsRequest')?.errors?.['required'] "></p-message>
+            </div>
+        </div>
+    </div>
+
+    <div class="col_6" [style]="{'width':'50%'}">
+        <div>
+            <label for="">Fundamentos de derecho del ministerio</label>
+            <textarea pInputTextarea [autoResize]="true" style="width: 80%" name="fundamentalsMinistryLaw"  required formControlName="fundamentalsMinistryLaw"></textarea>
+            <p-message severity="error" text="El campo es requerido" *ngIf="registerForm.get('fundamentalsMinistryLaw')?.touched && registerForm.get('fundamentalsMinistryLaw')?.errors?.['required'] "></p-message>
+        </div>
+         <div>
+            <label for="">Peticiones del ministerio</label>
+            <textarea pInputTextarea [autoResize]="true" style="width: 80%" name="ministryRequest"  required formControlName="ministryRequest"></textarea>
+            <p-message severity="error" text="El campo es requerido" *ngIf="registerForm.get('ministryRequest')?.touched && registerForm.get('ministryRequest')?.errors?.['required'] "></p-message>
+         </div>
+        <div>
+            <label for="">Notificaciones</label>
+            <textarea pInputTextarea [autoResize]="true" style="width: 80%" name="notifications"  required formControlName="notifications"></textarea>
+            <p-message severity="error" text="El campo es requerido" *ngIf="registerForm.get('notifications')?.touched && registerForm.get('notifications')?.errors?.['required'] "></p-message>
+        </div>
+        <div>
+
+            <p>Anexos : <small>Si el documento legal posee anexos puede
+            enviar un fichero comprimido a legalaki@gmail.com y
+            especifiquelo en el detalle de los echos</small>  </p>
+            <p-checkbox name="anexos" value="val1" ></p-checkbox>
+        </div>
+        <p-button label="Guardar"class="p-button-success" type="submit" [disabled]="registerForm.invalid"></p-button>
+        <p-button label="Guardar21"class="p-button-success"(onClick)="addLegalInstrument()" ></p-button>
+    </div>
+
+</form>

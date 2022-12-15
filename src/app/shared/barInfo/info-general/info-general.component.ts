@@ -11,7 +11,12 @@ export class InfoGeneralComponent implements OnInit {
  uploadFile: String = 'Cargar Archivo';
  img: String = 'img';
 
+ handleClick() {
+    console.log('click');
+  }
+
   ngOnInit(): void {
+
   }
 
 }
