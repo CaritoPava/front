@@ -13,10 +13,7 @@ export class LegalInstrumentServiceService {
    constructor(public http:HttpClient ) { }
 
    addLegalInstrument(legalInstrument:LegalInstrument):Observable<any>{
-    console.log(legalInstrument);
-    //capturar respuesta del servidor
-
-     return this.http.post(`${this.url}/legalInstruments`,legalInstrument,     {responseType: 'json'})
+     return this.http.post(`${this.url}/legalInstruments`,legalInstrument, {responseType: 'json'})
    }
 
 

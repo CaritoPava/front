@@ -1,17 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,Validators ,FormControl} from '@angular/forms';
 import { LegalInstrumentServiceService } from '../../services/legal-instrument-service.service';
-import { ResonseMessage } from '../../interfaces/interfaces';
-
-interface DocumentTypes{
-  id: number;
-  name: string;
-}
-
-interface Microenterprise{
-  id: number;
-  name: string;
-}
+import { MicroenterpriseServiceService } from '../../services/microenterprise-service.service';
+import { TypesLegalInstrumentServiceService } from '../../services/types-legal-instrument-service.service';
+import { ResponseMessage, TypesLegalInstrument } from '../../interfaces/interfaces';
+import { Microenterprise } from '../../interfaces/interfaces';
 
 
 @Component({
@@ -21,15 +14,33 @@ interface Microenterprise{
 })
 export class CreateLegalInstrumentComponent implements OnInit {
 
-  public response:ResonseMessage = {message:"", code:""};
+  constructor(private fb: FormBuilder,
+    private legalInstrumentService: LegalInstrumentServiceService,
+    private microenterpriseService:MicroenterpriseServiceService,
+    private typeLegalInstrumentService : TypesLegalInstrumentServiceService) {};
 
+  public response:ResponseMessage = {message:"", code:""};
 
-  constructor(private fb: FormBuilder, private legalInstrumentService: LegalInstrumentServiceService) {};
+  public microenterprise:Microenterprise = {
+    id_Microenterprise:0,
+    nit:"",
+    name:"",
+    address:"",
+    phone:""
+  };
 
+  public microenterprises:Microenterprise[] = [];
+
+  public type : TypesLegalInstrument={
+    id_Type:0,
+    name:""
+  }
+
+  public types:TypesLegalInstrument[] = [];
 
   registerForm:FormGroup = this.fb.group({
-    idTypeInstrument: ['', Validators.required],
-    idMicroenterprise: ['', Validators.required],
+    idTypeInstrument: [0, Validators.required],
+    idMicroenterprise: [0, Validators.required],
     detail: ['', Validators.required, ],
     rights: ['', Validators.required,],
     plaintiffsRequest: ['', Validators.required, ],
@@ -39,18 +50,40 @@ export class CreateLegalInstrumentComponent implements OnInit {
     anexos: [false],
  });
 
-
  campIsValid(campo:string){
-   return this.registerForm.controls[campo].errors && this.registerForm.controls[campo].touched;
- }
+  return this.registerForm.controls[campo].errors && this.registerForm.controls[campo].touched;
+}
 
-// enviar datos del formulario
+getMicroenterprises(){
+  this.microenterpriseService.getMicroenterprises()
+  .subscribe(
+    (data) => {
+      this.microenterprises = data;
+    },
+    err => {
+      console.log(err, "err");
+    }
+  )
+}
+
+getTypesLegalInstrument(){
+  this.typeLegalInstrumentService.getMicroenterprises()
+  .subscribe(
+    (data) => {
+      console.log(data, "data");
+      this.types = data;
+      console.log(this.types, "types");
+    },
+    err => {
+      console.log(err, "err");
+    }
+  )
+}
 
  addLegalInstrument(){
     this.legalInstrumentService.addLegalInstrument(this.registerForm.value)
     .subscribe(
       data => {
-        console.log(data, "data");
         this.response.message = data.message;
         this.response.code = data.code;
       },
@@ -63,14 +96,11 @@ export class CreateLegalInstrumentComponent implements OnInit {
 
   }
 
-
-
   onSumit(){
     if(this.registerForm.invalid){
       this.registerForm.markAllAsTouched();
       return;
     }
-    console.log(this.registerForm.value);
     this.addLegalInstrument();
     this.registerForm.reset();
     this.response =  {message:"", code:""};
@@ -80,10 +110,8 @@ export class CreateLegalInstrumentComponent implements OnInit {
     this.registerForm.reset({
       anexos: false
     });
-
-
+    this.getMicroenterprises();
+    this.getTypesLegalInstrument();
   }
-
-
 
 }

@@ -9,8 +9,21 @@ export interface LegalInstrument {
   idMicroenterprise:number;
 }
 
-export interface ResonseMessage{
+export interface ResponseMessage{
   message:string;
   code : string;
+}
+
+export interface Microenterprise {
+  id_Microenterprise:number;
+  nit:string;
+  name:string;
+  address:string;
+  phone:string;
+}
+
+export interface TypesLegalInstrument {
+  id_Type:number;
+  name:string;
 }
 

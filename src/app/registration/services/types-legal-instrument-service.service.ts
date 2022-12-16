@@ -1,14 +1,13 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Microenterprise } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MicroenterpriseServiceService {
+export class TypesLegalInstrumentServiceService {
 
-   private url:string = 'http://localhost:9090/microenterprises';
+  private url:string = 'http://localhost:9090/typesinstruments';
 
   constructor(public http:HttpClient ) { }
 
