@@ -27,3 +27,46 @@ export interface TypesLegalInstrument {
   name:string;
 }
 
+export interface StateLegalInstrument {
+  id:number;
+  name:string;
+}
+
+export interface Dependencie {
+  id:number;
+  name:string;
+}
+
+export interface Employee {
+  id:number;
+  document:number
+  name:string;
+  lastName:string;
+  phone:string;
+  dependencie: Dependencie
+}
+export interface LegalInstrumentComplete {
+  id:number;
+  filing:string;
+  detail:string;
+  rights:string;
+  plaintiffsRequest:string;
+  fundamentalsMinistryLaw:string;
+  ministryRequest:string;
+  notifications:string;
+  anexos:string;
+  companyRequest:string;
+  basicsOfBusinessLaw:string;
+  failed:string;
+  contemptIncident:string;
+  isActive:string;
+  creationDate:string;
+  typeInstrument: TypesLegalInstrument;
+  microenterprise: Microenterprise;
+  employeeResponsible: Employee;
+  employeeChecked: Employee;
+  stateLegalInstrument: StateLegalInstrument;
+}
+
+
+

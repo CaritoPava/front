@@ -1,8 +1,17 @@
-<div class="grid w-full background-primary text-white">
-    <div class="col-8 text-center">{{info}}</div>
-    <div class="grid col-4 justify-content-end w-auto mr-8">
-        <p>{{uploadFile}}</p>
-        <p-button  type="button" icon="pi pi-book"class="p-button-rounded p-button-sm" (click)="handleClick()"></p-button>
+<div class="grid w-full background-primary text-white bg-green-700 fixed absolute">
+    <div class="col-8 text-center mt-1">{{info}}</div>
+    <div class="grid col-4 justify-content-end w-auto mr-8" >
+        <p class="mr-7">Cargue su documento</p>
+        <p-fileUpload
+          mode="basic"
+          name="file[]"
+          [customUpload]="true"
+          accept=".csv"
+          [auto]="true"
+          (uploadHandler)="onUpload($event)"
+          class = "mt-2">
+
+      </p-fileUpload>
     </div>
 
 </div>

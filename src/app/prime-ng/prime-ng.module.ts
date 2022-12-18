@@ -5,8 +5,10 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {FileUploadModule} from 'primeng/fileupload';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {TableModule} from 'primeng/table'
 
 
 
@@ -19,9 +21,11 @@ import {MessageModule} from 'primeng/message';
     CheckboxModule,
     DropdownModule,
     InputTextModule,
+    FileUploadModule,
     InputTextareaModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    TableModule
   ],
 })
 export class PrimeNgModule { }

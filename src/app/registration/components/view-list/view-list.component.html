@@ -1,0 +1,24 @@
+
+
+  <p-table #dt sortField="id" class="  flex flex-wrap align-items-center justify-content-center card-container" [paginator]="true" [rows]="10" [value]="legalInstruments">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Microemepresa</th>
+            <th>Estado</th>
+            <th>Fecha de radicación</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-legalInstrument>
+        <tr>
+            <td>{{legalInstrument.id}}</td>
+            <td>{{legalInstrument.microenterprise.name}}</td>
+            <td>{{legalInstrument.stateLegalInstrument.name}}</td>
+            <td >{{legalInstrument.creationDate}}</td>
+            <td><p-button  icon="pi pi-plus" iconPos="left"  class="p-button-link p-button-sm"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+

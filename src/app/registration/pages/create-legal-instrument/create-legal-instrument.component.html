@@ -1,15 +1,20 @@
-<form class="grid " (ngSubmit)="onSumit()" [formGroup]="registerForm">
-    <div class="col_6" [style]="{'width':'50%'}">
+<form
+  class="grid m-4 "
+  (ngSubmit)="onSumit()"
+  [formGroup]="registerForm">
+    <div class="col_6 mt-7"
+    [style]="{'width':'50%'}">
         <div>
-            <div>
-                <label for="">Tipo de documento</label>
+            <div class="mb-3 ">
+                <label class="mr-7"  >Tipo de documento</label>
                 <p-dropdown
                 [options]="types"
                 optionLabel="name"
                 optionValue="id_Type"
                 placeholder="Selecciona el tipo de instrumento legal"
                 formControlName="idTypeInstrument"
-                [style]="{'width':'40%'}"
+                [style]="{'width':'65%'}"
+                class ="mr-3"
                 ></p-dropdown>
                 <p-message
                 severity="error"
@@ -18,33 +23,36 @@
                 ></p-message>
             </div>
 
-            <label for="">Nombre de microempresa</label>
+
+            <div class="mb-3">
+            <label class="mr-3"   >Nombre de microempresa</label>
                 <p-dropdown
                   [options]="microenterprises"
                   optionLabel="name"
                   optionValue="id_Microenterprise"
                   placeholder="Selecciona nombre de tu microempresa"
                   formControlName="idMicroenterprise"
-                  [style]="{'width':'40%'}"
+                  [style]="{'width':'65%'}"
                   ></p-dropdown>
                   <p-message
                   severity="error"
                   text="El campo es requerido"
                   *ngIf="campIsValid('idMicroenterprise')"
                   ></p-message>
-
+            </div>
         </div>
 
-        <div>
-            <div>
-                <label for="">
+        <div class="mt-3">
+            <div class=" mb-3 flex flex-column ">
+                <label class="mt-3">
                   Detalle de echos
                 </label>
                 <textarea
                   pInputTextarea
                   [autoResize]="true"
-                  style="width: 80%"
+                  [style]="{'width':'92%'}"
                   formControlName="detail"
+                  class="mt-3"
                   ></textarea>
                 <p-message
                   severity="error"
@@ -57,8 +65,9 @@
                 <textarea
                   pInputTextarea
                   [autoResize]="true"
-                  style="width: 80%"
+                  [style]="{'width':'92%'}"
                   required formControlName="rights"
+                  class="mt-3"
                   ></textarea>
                 <p-message
                   severity="error"
@@ -71,8 +80,9 @@
                 <textarea
                   pInputTextarea
                   [autoResize]="true"
-                  style="width: 80%"
+                  [style]="{'width':'92%'}"
                   formControlName="plaintiffsRequest"
+                  class="mt-3"
                   ></textarea>
                 <p-message
                   severity="error"
@@ -82,14 +92,15 @@
         </div>
     </div>
 
-    <div class="col_6" [style]="{'width':'50%'}">
+    <div class="col_6 mt-7" [style]="{'width':'50%'}">
         <div>
             <label for="">Fundamentos de derecho del ministerio</label>
             <textarea
               pInputTextarea
               [autoResize]="true"
-              style="width: 80%"
+              [style]="{'width':'92%'}"
               formControlName="fundamentalsMinistryLaw"
+              class="mt-3"
               ></textarea>
             <p-message
               severity="error"
@@ -101,8 +112,9 @@
             <textarea
             pInputTextarea
             [autoResize]="true"
-            style="width: 80%"
+            [style]="{'width':'92%'}"
             formControlName="ministryRequest"
+            class="mt-3"
             ></textarea>
             <p-message
               severity="error"
@@ -114,28 +126,38 @@
             <textarea
               pInputTextarea
               [autoResize]="true"
-              style="width: 80%"
+              [style]="{'width':'92%'}"
               formControlName="notifications"
+              class="mt-3"
               ></textarea>
             <p-message
               severity="error"
               text="El campo es requerido"
               *ngIf="campIsValid('notifications') "></p-message>
         </div>
-        <div>
+        <div [style]="{'width':'92%'}" class="mt-3 flex p-2">
+          <p-checkbox
+          formControlName="anexos"
+          type="checkbox"
+          [binary]="true"
+          class="mr-3"
+          ></p-checkbox>
+          <label class="mr-3">Anexos</label>
+           <small>
+            Si el documento legal posee anexos puede
+            enviar un fichero comprimido a legalaki@gmail.com
+            con el numero de radicado obtenido.Por favor
+            especifiquelo en el detalle de los echos</small>
 
-            <p>Anexos : <small>Si el documento legal posee anexos puede
-            enviar un fichero comprimido a legalaki@gmail.com y
-            especifiquelo en el detalle de los echos</small>  </p>
-
-
-            <p-checkbox
-              formControlName="anexos"
-              type="checkbox"
-              [binary]="true"
-              ></p-checkbox>
         </div>
-        <p-button label="Guardar"class="p-button-success" type="submit" ></p-button>
+        <small >
+          Su tiene un archivo csv con los datos de la tutela, debe contener los siguientes campos:
+           detail,rights,plaintiffsRequest,fundamentalsMinistryLaw,ministryRequest,notifications,anexos,
+           idTypeInstrument,idMicroenterprise </small>
+        <div class="mt-8 " >
+          <p-button label="Guardar"class="p-button-success bg-green-700" type="submit" ></p-button>
+        </div>
+
 
         <div>
           <p-message
@@ -153,6 +175,5 @@
         </div>
 
     </div>
-
-
 </form>
+

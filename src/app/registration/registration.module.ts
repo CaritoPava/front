@@ -7,7 +7,11 @@ import { CreateLegalInstrumentComponent } from './pages/create-legal-instrument/
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { LegalInstrumentServiceService } from './services/legal-instrument-service.service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AssignmentsComponent } from './pages/assignments/assignments.component';
+
+import { ManagementComponent } from './pages/management/management.component';
+import { ViewListComponent } from './components/view-list/view-list.component';
 
 
 
@@ -17,17 +21,23 @@ import { LegalInstrumentServiceService } from './services/legal-instrument-servi
 @NgModule({
   declarations: [
     CreateLegalInstrumentComponent,
+    AssignmentsComponent,
+    ManagementComponent,
+    ViewListComponent
 
   ],
   exports: [
     CreateLegalInstrumentComponent,
-
+    AssignmentsComponent,
+    ManagementComponent,
+    ViewListComponent
   ],
   imports: [
     CommonModule,
     PrimeNgModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module
 
   ],
 
