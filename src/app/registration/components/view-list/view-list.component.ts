@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LegalInstrumentComplete } from '../../interfaces/interfaces';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-view-list',

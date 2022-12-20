@@ -1,1 +1,47 @@
-<p>make-request works!</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="requestForm">
+
+
+
+
+  <div class="grid">
+
+    <label class="mt-3">
+      Escriba el testo de sus solicitud
+    </label>
+    <textarea
+      pInputTextarea
+      [autoResize]="true"
+      [style]="{'width':'92%'}"
+      formControlName="request"
+      class="mt-3"
+      ></textarea>
+    <p-message
+      severity="error"
+      text="El campo es requerido"
+      *ngIf="campIsValid('request')"
+      ></p-message>
+  </div>
+
+  <div class="grid">
+    <label class="my-4 col"  >Dependencia destino</label>
+    <p-dropdown
+    [options]="dependencies"
+    optionLabel="name"
+    optionValue="id"
+    placeholder="Selecciona la dependencia"
+    formControlName="idDependencie"
+    [style]="{'width':'65%'}"
+    class="my-3 col"
+    ></p-dropdown>
+    <p-message
+    severity="error"
+    text="El campo es requerido"
+    *ngIf="campIsValid('idDependencie')"
+    ></p-message>
+
+    <p-button label="Enviar"class="p-button-success col my-3" type="submit" ></p-button>
+  </div>
+
+
+
+</form>

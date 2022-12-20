@@ -1,1 +1,34 @@
-<p>management works!</p>
+<div class="grid">
+
+  <div class="col">
+    <app-info-legal-instrument [legalInstrument]="legalInstrument" [answer]="answer"></app-info-legal-instrument>
+  </div>
+  <div class="col">
+    <app-write-response
+    [legalInstrument]="legalInstrument"
+    [idLegalInstrument]="legalInstrument.id"
+    [responseApi]="resposeApi"
+    (onNewAnswer)="addNewAnswer($event)"
+    (onNewCompanyRequest)="addNewCompanyRequest($event)"
+    (onNewBasicsOfBusinessLaw)="addNewBasicsOfBusinessLaw($event)"
+    (onNewContemptIncident)="addNewContemptIncident($event)"
+    (onNewFailed)="addNewFailed($event)"
+    ></app-write-response>
+    <div class="my-3">
+      <p-button label="Enviar a verificacion"class="p-button-success"  (click)="addRequestCheck()"></p-button>
+    </div>
+
+    <app-make-request
+    [legalInstrument]="legalInstrument"
+    [idLegalInstrument]="legalInstrument.id"
+    (onNewRequest)="addNewRequest($event)"
+    ></app-make-request>
+
+    <app-view-request
+    [requestAll]="requestAll"
+    ></app-view-request>
+  </div>
+
+</div>
+
+

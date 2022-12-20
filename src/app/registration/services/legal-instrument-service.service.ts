@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LegalInstrument } from '../interfaces/interfaces';
+import { LegalInstrument, LegalInstrumentComplete, LegalInstrumentUpdate,ResponseMessage } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,19 @@ export class LegalInstrumentServiceService {
       return this.http.get(`${this.url}/legalInstruments/employee/${this.idEmployee}`);
     }
 
-   addLegalInstrument(legalInstrument:LegalInstrument):Observable<any>{
-     return this.http.post(`${this.url}/legalInstruments`,legalInstrument, {responseType: 'json'})
+    getLegalInstrumentById(idLegalInstrument:number):Observable<LegalInstrumentComplete>{
+      return this.http.get<LegalInstrumentComplete>(`${this.url}/legalInstruments/${idLegalInstrument}`);
+    }
+
+   addLegalInstrument(legalInstrument:LegalInstrument):Observable<ResponseMessage>{
+     return this.http.post<ResponseMessage>(`${this.url}/legalInstruments`,legalInstrument)
    }
+
+    updateLegalInstrument(idLegalInstrument:number,legalInstrument:LegalInstrumentUpdate):Observable<any>{
+      return this.http.put(`${this.url}/legalInstruments/${idLegalInstrument}`,legalInstrument)
+    }
+
+
 
 
 

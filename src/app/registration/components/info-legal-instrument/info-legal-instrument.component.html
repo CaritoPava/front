@@ -1,1 +1,94 @@
-<p>info-legal-instrument works!</p>
+
+<!--Mostrar informacion de la tutela cuando no sea null  -->
+<div class="grid text-600" *ngIf="legalInstrument !=null">
+  <div class="col">
+
+    <div  class="bg-green-700 text-base text-50 text-center p-1">
+      <h3>DETALLE INSTRUMENTO JURIDICO</h3>
+      <h4>{{legalInstrument.id}}</h4>
+    </div>
+    <div class=" text-center p-4">
+      {{legalInstrument.typeInstrument.name}}
+    </div>
+    <div class="ml-4 mb-4">
+
+      <p> Radicado número: {{legalInstrument.filing}}</p>
+      <p> Nombre de la microempresa: {{legalInstrument.microenterprise.name}}</p>
+      <p> Fecha de radicación: {{legalInstrument.creationDate | date: 'dd/MM/yyyy'}}</p>
+
+    </div>
+    <div>
+      <p-accordion class="mt-4 white-space-normal" [multiple]="true" >
+        <p-accordionTab   header="Detalle de los hechos">
+          {{legalInstrument.detail}}
+        </p-accordionTab>
+        <p-accordionTab header="Derechos presuntamente vulnerados">
+            <ng-template pTemplate="content">
+              {{legalInstrument.rights}}
+            </ng-template>
+        </p-accordionTab>
+        <p-accordionTab header="Peticiones del accionante">
+            <ng-template pTemplate="content">
+                {{legalInstrument.plaintiffsRequest}}
+            </ng-template>
+        </p-accordionTab>
+        <p-accordionTab header="Fundamentos de ley del ministerio">
+          <ng-template pTemplate="content">
+              {{legalInstrument.fundamentalsMinistryLaw}}
+          </ng-template>
+        </p-accordionTab>
+        <p-accordionTab header="Peticiones del ministerio">
+        <ng-template pTemplate="content">
+            {{legalInstrument.ministryRequest}}}
+        </ng-template>
+        </p-accordionTab>
+        <p-accordionTab header="Notificaciones">
+        <ng-template pTemplate="content">
+            {{legalInstrument.notifications}}
+        </ng-template>
+        </p-accordionTab>
+        <p-accordionTab header="Anexos">
+        <ng-template   pTemplate="content"  *ngIf="legalInstrument.anexos === 'true'">
+        El instrumento legal posee anexos debe revisar el correo eléctronico de acuerdo al rádicado número {{legalInstrument.filing}}
+        </ng-template>
+        <ng-template  pTemplate="content"  *ngIf="legalInstrument.anexos === 'false'">
+        No posee anexos
+        </ng-template>
+        </p-accordionTab>
+        <p-accordionTab header="Peticiones de la empresa" *ngIf="legalInstrument.companyRequest != null">
+          <ng-template pTemplate="content">
+              {{legalInstrument.companyRequest}}
+          </ng-template>
+          </p-accordionTab>
+          <p-accordionTab header="Fundamentos de derecho de la empresa" *ngIf="legalInstrument.basicsOfBusinessLaw != null">
+            <ng-template pTemplate="content">
+                {{legalInstrument.basicsOfBusinessLaw}}
+            </ng-template>
+          </p-accordionTab>
+          <p-accordionTab header="Incidente de desacato" *ngIf="legalInstrument.contemptIncident != null">
+            <ng-template pTemplate="content">
+                {{legalInstrument.contemptIncident}}
+            </ng-template>
+          </p-accordionTab>
+          <p-accordionTab header="Respuesta " *ngIf="answer != null">
+            <ng-template pTemplate="content">
+                {{answer.answer}}
+            </ng-template>
+            <p-accordionTab header="Fallo" *ngIf="legalInstrument.failed != null">
+              <ng-template pTemplate="content">
+                  {{legalInstrument.failed}}
+              </ng-template>
+            </p-accordionTab>
+          </p-accordionTab>
+    </p-accordion>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+

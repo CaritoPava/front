@@ -1,3 +1,4 @@
+import { RequestToDependenciesService } from '../services/request-to-dependencies.service';
 export interface LegalInstrument {
   rights:string;
   plaintiffsRequest:string;
@@ -66,6 +67,47 @@ export interface LegalInstrumentComplete {
   employeeResponsible: Employee;
   employeeChecked: Employee;
   stateLegalInstrument: StateLegalInstrument;
+}
+
+export interface LegalInstrumentUpdate {
+  companyRequest?:string;
+  basicsOfBusinessLaw?:string;
+  failed?:string;
+  contemptIncident?:string;
+}
+
+export interface AnswerLegalInstrument {
+  id:number;
+  answer:string;
+  date:string;
+  idLegalInstrument: number;
+}
+
+export interface AnswerAdd {
+  answer:string;
+  idLegalInstrument: number;
+}
+
+export interface RequestToDependencie{
+  request:string;
+  idDependencie:number;
+  idLegalInstrument:number;
+  idStatus:number;
+}
+
+export interface RequestToDependencieResponse{
+  id:number;
+  request:string;
+  response:string
+  dependencie:string;
+  idLegalInstrument:number;
+  nameEmployee:string;
+  status:string;
+}
+
+export interface RequestToDependencieUpdate{
+  response:string;
+  responseStatus:number;
 }
 
 

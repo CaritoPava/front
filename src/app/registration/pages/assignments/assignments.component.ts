@@ -33,6 +33,10 @@ export class AssignmentsComponent {
     )
   }
 
+
+  // enviar lista de legal instruments al componente de asignación
+
+
   ngOnInit(){
     this.getLegalInstrumentsByResponsable();
   }
