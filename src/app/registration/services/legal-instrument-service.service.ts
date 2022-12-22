@@ -13,8 +13,8 @@ export class LegalInstrumentServiceService {
 
    constructor(public http:HttpClient ) { }
 
-   getLegalInstrumentsByResponsable():Observable<any>{
-      return this.http.get(`${this.url}/legalInstruments/employee/${this.idEmployee}`);
+   getLegalInstrumentsByResponsable(idEmployee:number):Observable<any>{
+      return this.http.get(`${this.url}/legalInstruments/employee/${idEmployee}`);
     }
 
     getLegalInstrumentById(idLegalInstrument:number):Observable<LegalInstrumentComplete>{

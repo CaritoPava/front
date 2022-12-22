@@ -1,0 +1,17 @@
+<div>
+  <label class="mt-3">
+    Escriba un comentario para dar respuesta a la solicitud:
+  </label>
+  <textarea
+    pInputTextarea
+    [autoResize]="true"
+    [style]="{'width':'92%'}"
+    [(ngModel)]="comment"
+    class="mt-3"
+    ></textarea>
+    <div class="grid justify-content-center">
+      <p-button label="Verificar y firmar"class="p-button-success col my-3" (click)="check()" ></p-button>
+      <p-button label="Devolver para correccion "class="p-button-success col my-3" (click)="disapprove()" ></p-button>
+    </div>
+
+</div>

@@ -16,17 +16,23 @@ export class RequestToDependenciesService {
     return this.http.get<RequestToDependencieResponse[]>(`${this.url}/requesttodependencie/${idDependencie}/legalInstrument/${idLegalInstrument}`);
   }
 
+  getRequestById(idRequest:number):Observable<RequestToDependencieResponse>{
+    return this.http.get<RequestToDependencieResponse>(`${this.url}/requesttodependencie/${idRequest}`);
+  }
 
+  getRequestsByLegalInstrument(idLegalInstrument:number):Observable<RequestToDependencieResponse[]>{
+    return this.http.get<RequestToDependencieResponse[]>(`${this.url}/requesttodependencie/legalInstrument/${idLegalInstrument}`);
+  }
+
+  getRequestByIdEmployee(idEmployee:number):Observable<RequestToDependencieResponse[]>{
+    return this.http.get<RequestToDependencieResponse[]>(`${this.url}/requesttodependencie/employee/${idEmployee}`);
+  }
   addRequestToDependencies(request:RequestToDependencie):Observable<any>{
     return this.http.post(`${this.url}/requesttodependencie`,request )
   }
 
   updateRequestToDependencies(idRequest:number, request:RequestToDependencieUpdate):Observable<any>{
     return this.http.put(`${this.url}/requesttodependencie/${idRequest}`,request)
-  }
-
-  getRequestsByLegalInstrument(idLegalInstrument:number):Observable<RequestToDependencieResponse[]>{
-    return this.http.get<RequestToDependencieResponse[]>(`${this.url}/requesttodependencie/legalInstrument/${idLegalInstrument}`);
   }
 
 

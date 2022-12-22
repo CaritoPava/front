@@ -1,1 +1,35 @@
-<p>view-checker works!</p>
+
+
+<div class="grid">
+
+  <div class="col p-4 align-content-center">
+
+    <div class="m-3">
+      <app-info-legal-instrument [legalInstrument]="legalInstrument" [answer]="answer" *ngIf="isInfoVisible" ></app-info-legal-instrument>
+    </div>
+    <p-button (click)="viewInfoLegalInstrument() " icon="pi pi-plus" iconPos="left"  class="p-button-link p-button-sm m-4" label="Ver informacion de instrumento legal"></p-button>
+
+  </div>
+
+  <div class="col">
+    <div  class="bg-yellow-300 text-base text-50 text-center p-1 my-5">
+      <h3>DEPENDENCIA DE {{nameDendencie | uppercase}}</h3>
+      <h4>Peticion número: {{request.id}}</h4>
+    </div>
+
+    <div class="top-auto text-lg text-gray-700 ml-4">
+      <h4>Texto de la peticion:</h4>
+      <p > {{request.request}}</p>
+      <h4>Id instrumento legal : </h4>
+      <p> {{request.idLegalInstrument}}</p>
+    </div>
+    <div class="ml-4" *ngIf="login.dependencie?.name !== 'Verificaciones'">
+      <app-response-request (onNewResponse)="addNewResponse($event)"></app-response-request>
+    </div>
+
+  <div class="ml-4" >
+    <app-response-checked  (onNewResponse)="addNewResponse($event)" *ngIf="login.dependencie?.name === 'Verificaciones'"></app-response-checked>
+  </div>
+
+  </div>
+</div>

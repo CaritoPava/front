@@ -1,7 +1,12 @@
 <div class="grid container_header m-3">
   <div class="col-10 logo text-green-700">{{nameApp}}</div>
   <div class=" grid col-2">
-    <div class="col text-600">{{dependencie | titlecase}}</div>
-    <div class="col text-600">Img</div>
+    <div class="col text-600">{{login.dependencie?.name| titlecase}}</div>
+    <div class="col text-600">{{login.name| titlecase}}</div>
+    <p-button
+      label="Cerrar sesión"
+      class="p-button-danger col"
+      (click)="logout()"
+    ></p-button>
   </div>
 </div>

@@ -1,0 +1,33 @@
+<div class="py-9">
+
+  <div  class="top-auto text-lg text-gray-700 text-center container" >
+    <h4>Listado de instrumentos legales asignados</h4>
+  </div>
+
+  <div >
+
+    <p-table [value]="requests">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Id </th>
+              <th>Id documento legal</th>
+              <th>Estado</th>
+              <th>Descargar documento</th>
+              <th>Confirmar radicación</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-request>
+          <tr>
+              <td>{{request.id}}</td>
+              <td>{{request.idLegalInstrument}}</td>
+              <td>{{request.status}}</td>
+              <td><p-button  (click)= "download(request.idLegalInstrument)" icon="pi pi-download" iconPos="left"   class=" p-button-secondary p-button-raised p-button-rounded p-button-outlined p-button-sm"></p-button></td>
+              <td><p-button  (click)= "confirm(request.id)"icon="pi pi-check" iconPos="left" class=" p-button-secondary p-button-raised p-button-rounded p-button-outlined p-button-sm"></p-button></td>
+          </tr>
+      </ng-template>
+  </p-table>
+
+
+  </div>
+
+</div>

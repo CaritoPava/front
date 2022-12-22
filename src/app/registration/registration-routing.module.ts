@@ -7,6 +7,8 @@ import { CreateLegalInstrumentComponent } from './pages/create-legal-instrument/
 import { AssignmrntsByDependencieComponent } from './pages/assignmrnts-by-dependencie/assignmrnts-by-dependencie.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ViewCheckerComponent } from './pages/view-checker/view-checker.component';
+import { ViewFiledComponent } from './pages/view-filed/view-filed.component';
+import { AdministratorComponent } from './pages/administrator/administrator.component';
 
 
 const routes : Routes = [
@@ -18,9 +20,10 @@ const routes : Routes = [
       {path:"asignments", component: AssignmentsComponent },
       {path:"view/:id", component: ManagementComponent},
       {path:"otherDependencies", component: AssignmrntsByDependencieComponent},
-      {path:"viweChecker/:id", component:ViewCheckerComponent},
+      {path:"viewChecker/:id", component:ViewCheckerComponent},
+      {path:"filed", component:ViewFiledComponent},
+      {path:"administrator", component:AdministratorComponent},
       {path:"**", redirectTo:"create"}
-
     ]
   }
 ]

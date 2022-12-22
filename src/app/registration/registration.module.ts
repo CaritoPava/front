@@ -22,6 +22,12 @@ import { ViewRequestComponent } from './components/view-request/view-request.com
 import { AssignmrntsByDependencieComponent } from './pages/assignmrnts-by-dependencie/assignmrnts-by-dependencie.component';
 import { ViewCheckerComponent } from './pages/view-checker/view-checker.component';
 import { ViewListRequestComponent } from './components/view-list-request/view-list-request.component';
+import { ViewInfoCompleteRequestComponent } from './components/view-info-complete-request/view-info-complete-request.component';
+import { ResponseRequestComponent } from './components/response-request/response-request.component';
+import { ResponseCheckedComponent } from './components/response-checked/response-checked.component';
+import { ViewFiledComponent } from './pages/view-filed/view-filed.component';
+import { ListFiledComponent } from './components/list-filed/list-filed.component';
+import { AdministratorComponent } from './pages/administrator/administrator.component';
 
 
 
@@ -41,7 +47,13 @@ import { ViewListRequestComponent } from './components/view-list-request/view-li
     ViewRequestComponent,
     AssignmrntsByDependencieComponent,
     ViewCheckerComponent,
-    ViewListRequestComponent
+    ViewListRequestComponent,
+    ViewInfoCompleteRequestComponent,
+    ResponseRequestComponent,
+    ResponseCheckedComponent,
+    ViewFiledComponent,
+    ListFiledComponent,
+    AdministratorComponent
   ],
 
   imports: [

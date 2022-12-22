@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { RequestToDependencieResponse } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-view-list-request',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-list-request.component.css']
 })
 export class ViewListRequestComponent {
+
+  @Input() requests:RequestToDependencieResponse[] = [];
+
+
 
 }

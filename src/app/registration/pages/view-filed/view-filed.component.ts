@@ -3,9 +3,6 @@ import { RequestToDependenciesService } from '../../services/request-to-dependen
 import { RequestToDependencieResponse } from '../../interfaces/interfaces';
 import { LoginService } from '../../../login/services/login.service';
 
-
-//puedo exportar e inportar enums
-
 export enum Dependencie {
   'Investigaciones'= 1,
   'Juridica'= 2,
@@ -15,11 +12,12 @@ export enum Dependencie {
 }
 
 @Component({
-  selector: 'app-assignmrnts-by-dependencie',
-  templateUrl: './assignmrnts-by-dependencie.component.html',
-  styleUrls: ['./assignmrnts-by-dependencie.component.css']
+  selector: 'app-view-filed',
+  templateUrl: './view-filed.component.html',
+  styleUrls: ['./view-filed.component.css']
 })
-export class AssignmrntsByDependencieComponent {
+
+export class ViewFiledComponent {
 
   constructor(public requestToDependenciesService:RequestToDependenciesService,
     public loginService:LoginService){}
@@ -49,10 +47,17 @@ export class AssignmrntsByDependencieComponent {
     )
   }
 
+  download(id:number){
+    console.log('download', id);
+
+  }
+
+  confirm(id:number){
+    console.log('confirm', id);
+  }
+
   ngOnInit(){
     this.getRequestsByEmployee();
   }
-
-
 
 }

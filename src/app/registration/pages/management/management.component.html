@@ -15,13 +15,14 @@
     (onNewFailed)="addNewFailed($event)"
     ></app-write-response>
     <div class="my-3">
-      <p-button label="Enviar a verificacion"class="p-button-success"  (click)="addRequestCheck()"></p-button>
+      <p-button label="Enviar a verificacion"class="p-button-success"  (click)="addRequestCheck()  " *ngIf = "legalInstrument.stateLegalInstrument.name !== 'Radicado'"></p-button>
     </div>
 
     <app-make-request
     [legalInstrument]="legalInstrument"
     [idLegalInstrument]="legalInstrument.id"
     (onNewRequest)="addNewRequest($event)"
+    *ngIf = "legalInstrument.stateLegalInstrument.name !== 'Radicado'"
     ></app-make-request>
 
     <app-view-request

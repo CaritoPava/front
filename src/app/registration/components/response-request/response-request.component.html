@@ -1,0 +1,17 @@
+<div>
+  <label class="mt-3">
+    Escriba un comentario para dar respuesta a la solicitud, recuerde que en caso de no ser aceptada, debe escribir un comentario:
+  </label>
+  <textarea
+    pInputTextarea
+    [autoResize]="true"
+    [style]="{'width':'92%'}"
+    [(ngModel)]="comment"
+    class="mt-3"
+    ></textarea>
+    <div class="grid justify-content-center">
+      <p-button label="Aprobar"class="p-button-success col my-3" (click)="approveRequest()" ></p-button>
+      <p-button label="Negar "class="p-button-success col my-3" (click)="disapproveRequest()" ></p-button>
+    </div>
+
+</div>

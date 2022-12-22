@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { RegistrationModule } from './registration/registration.module';
 import { SharedModule } from './shared/shared.module';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
+import { LoginModule } from './login/login.module';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/pages/login/login.component';
 
 
 
@@ -16,16 +19,19 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     RegistrationModule,
+    LoginModule,
     SharedModule,
     PrimeNgModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
