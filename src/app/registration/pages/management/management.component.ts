@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { RequestToDependenciesService } from '../../services/request-to-dependencies.service';
 import { FormGroup } from '@angular/forms';
 
+
 // enum con status y codigo
 
 enum Status {
@@ -15,6 +16,7 @@ enum Status {
   'Aceptada'= 9,
   'Rechazada'= 10
 }
+
 
 enum Dependencie {
   'Investigaciones'= 1,
@@ -40,7 +42,7 @@ export class ManagementComponent implements OnInit{
 
   idLegalInstrument!:number ;
   legalInstrument!:LegalInstrumentComplete
-
+  failed:string = "";
 
 public answer:AnswerLegalInstrument = {
   id:0,
@@ -159,6 +161,7 @@ addNewContemptIncident(incident:string){
 }
 
 addNewFailed(failed:string){
+  console.log(failed, "failed");
   this.legalInstrumentUpdate.failed = failed;
   this.legalInstrumentServiceService.updateLegalInstrument(this.idLegalInstrument, this.legalInstrumentUpdate)
   .subscribe(
@@ -201,7 +204,7 @@ Swal.fire({
           console.log(data, "data");
           Swal.fire(
             'Enviado!',
-            'La solicitud ha sido enviada.',
+            `${data.message} `,
             'success'
           )
           this.router.navigate(['/legalInstruments/asignments'])
@@ -233,13 +236,57 @@ addNewRequest(info:FormGroup){
       console.log(data, "data");
       Swal.fire(
         'Enviado!',
-        'La solicitud ha sido enviada.',
+        `${data.message} `,
         'success'
       )
     }
   )
 }
 
+forArchive(){
+  this.legalInstrumentUpdate.stateLegalInstrument = "Archivo";
+  this.legalInstrumentServiceService.updateLegalInstrument(this.idLegalInstrument, this.legalInstrumentUpdate)
+  .subscribe(
+    (data) => {
+      console.log(data, "data");
+      Swal.fire(
+        'Enviado!',
+        `${data.message} `,
+        'success'
+      )
+    }
+  )
+  }
+
+forCompliance(){
+    this.legalInstrumentUpdate.stateLegalInstrument = "Dependencia para cumplimientro";
+    this.legalInstrumentServiceService.updateLegalInstrument(this.idLegalInstrument, this.legalInstrumentUpdate)
+    .subscribe(
+      (data) => {
+        console.log(data, "data");
+        Swal.fire(
+          'Enviado!',
+          `${data.message} `,
+          'success'
+        )
+      }
+    )
+}
+
+forChallenge(){
+  this.legalInstrumentUpdate.stateLegalInstrument = "Impugnacion";
+  this.legalInstrumentServiceService.updateLegalInstrument(this.idLegalInstrument, this.legalInstrumentUpdate)
+  .subscribe(
+    (data) => {
+      console.log(data, "data");
+      Swal.fire(
+        'Enviado!',
+        `${data.message} `,
+        'success'
+      )
+    }
+  )
+}
 
 ngOnInit(): void {
   this.activateRoute.params.subscribe(

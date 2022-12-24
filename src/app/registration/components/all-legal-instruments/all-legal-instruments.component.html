@@ -1,0 +1,32 @@
+<p-table #dt [value]="legalInstruments" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr>
+            <th > Id</th>
+            <th > Radicado</th>
+            <th > Tipo</th>
+            <th > Fecha</th>
+            <th > Esta Activa?</th>
+            <th > Microempresa</th>
+            <th > Empleado Responsable</th>
+            <th > Estado</th>
+
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-legalInstrument>
+        <tr>
+            <td >{{legalInstrument.id}}</td>
+            <td >{{legalInstrument.filing}}</td>
+            <td >{{legalInstrument.typeInstrument.name}}</td>
+            <td >{{legalInstrument.creationDate}}</td>
+            <td >{{legalInstrument.isActive}}</td>
+            <td >{{legalInstrument.microenterprise.name}}</td>
+            <td >{{legalInstrument.employeeResponsible.name}}</td>
+            <td  >{{legalInstrument.stateLegalInstrument.name}}</td>
+            <td>
+                <button type="button" pButton icon="pi pi-trash" (click)="delete(legalInstrument.id)"></button>
+            </td>
+
+        </tr>
+    </ng-template>
+</p-table>

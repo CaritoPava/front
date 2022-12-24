@@ -33,6 +33,7 @@ export class ViewCheckerComponent implements OnInit{
   request!:RequestToDependencieResponse;
   isInfoVisible:boolean = false;
   nameDendencie = DependencieType[DependencieType.Verificaciones];
+  responseApi:string = "";
 
   get login (){
     return this.loginService.employee;
@@ -152,6 +153,20 @@ export class ViewCheckerComponent implements OnInit{
     }
 
     addNewResponse(response:RequestToDependencieUpdate){
+      if(response.responseStatus == Status.Aceptada){
+          this.addRquest={
+            request:"¨Por favor radicar este instrumento legal¨",
+            idDependencie:DependencieType.Radicaciones,
+            idLegalInstrument:this.request.idLegalInstrument,
+            idStatus:Status.Generada
+          }
+          this.requestToDependenciesService.addRequestToDependencies(this.addRquest)
+          .subscribe(
+            (data) => {
+              this.responseApi = data.message;
+            }
+          )
+      }
       console.log(response);
       Swal.fire({
         title: '¿Estas seguro de enviar la solicitud?',
@@ -168,7 +183,7 @@ export class ViewCheckerComponent implements OnInit{
         (data) => {
           Swal.fire(
             'Enviado!',
-            'La solicitud ha sido enviada.',
+            ` ${this.responseApi} `,
             'success'
           )
           this.router.navigate(['/legalInstruments/otherDependencies']);

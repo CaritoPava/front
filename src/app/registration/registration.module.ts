@@ -28,6 +28,9 @@ import { ResponseCheckedComponent } from './components/response-checked/response
 import { ViewFiledComponent } from './pages/view-filed/view-filed.component';
 import { ListFiledComponent } from './components/list-filed/list-filed.component';
 import { AdministratorComponent } from './pages/administrator/administrator.component';
+import { AllLegalInstrumentsComponent } from './components/all-legal-instruments/all-legal-instruments.component';
+import { BarNavAdministratorComponent } from './components/bar-nav-administrator/bar-nav-administrator.component';
+import { RequestReportComponent } from './components/request-report/request-report.component';
 
 
 
@@ -53,7 +56,10 @@ import { AdministratorComponent } from './pages/administrator/administrator.comp
     ResponseCheckedComponent,
     ViewFiledComponent,
     ListFiledComponent,
-    AdministratorComponent
+    AdministratorComponent,
+    AllLegalInstrumentsComponent,
+    BarNavAdministratorComponent,
+    RequestReportComponent
   ],
 
   imports: [

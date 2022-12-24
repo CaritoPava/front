@@ -25,6 +25,23 @@
     *ngIf = "legalInstrument.stateLegalInstrument.name !== 'Radicado'"
     ></app-make-request>
 
+    <div *ngIf = "legalInstrument.stateLegalInstrument.name === 'Radicado'">
+      <label class="mr-3"  >Fallo</label>
+      <textarea
+        pInputTextarea
+        [autoResize]="true"
+        [style]="{'width':'92%'}"
+        name="failed"
+        [(ngModel)]="failed"
+        class="mt-3"
+        ></textarea>
+      <p-button label="Guardar"class="p-button-success"  (click)="addNewFailed(failed)  " *ngIf = "legalInstrument.stateLegalInstrument.name !== 'Radicado'"></p-button>
+  <p-button label="Archivar"class="p-button-success bg-green-700" (click)="forArchive()" class="m-1" ></p-button>
+  <p-button label="Para cumplimiento"class="p-button-success bg-green-700"(click)="forCompliance()" class="m-1"></p-button>
+  <p-button label="Impugnación"class="p-button-success bg-green-700" (click)="forChallenge()" class="m-1" ></p-button>
+    </div>
+
+
     <app-view-request
     [requestAll]="requestAll"
     ></app-view-request>

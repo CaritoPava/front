@@ -43,15 +43,6 @@
       class="mt-3"
       *ngIf = "legalInstrument.stateLegalInstrument.name !== 'Radicado'"
       ></textarea>
-      <label class="mr-3"  *ngIf = "legalInstrument.stateLegalInstrument.name === 'Radicado'">Fallo</label>
-    <textarea
-      pInputTextarea
-      [autoResize]="true"
-      [style]="{'width':'92%'}"
-      formControlName="failed"
-      class="mt-3"
-      *ngIf = "legalInstrument.stateLegalInstrument.name === 'Radicado'"
-      ></textarea>
 
 
   </div>

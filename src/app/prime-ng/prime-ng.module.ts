@@ -9,9 +9,12 @@ import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {FileUploadModule} from 'primeng/fileupload';
 import {FieldsetModule} from 'primeng/fieldset';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem} from 'primeng/api';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
-import {TableModule} from 'primeng/table'
+import {TableModule} from 'primeng/table';
+
 
 
 
@@ -29,6 +32,7 @@ import {TableModule} from 'primeng/table'
     FileUploadModule,
     FieldsetModule,
     InputTextareaModule,
+    MenubarModule,
     MessagesModule,
     MessageModule,
     TableModule

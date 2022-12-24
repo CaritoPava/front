@@ -81,6 +81,8 @@ getTypesLegalInstrument(){
 }
 
  addLegalInstrument(){
+  if(this.registerForm.value.anexos == null) this.registerForm.value.anexos = false;
+  console.log(this.registerForm.value, "this.registerForm.value");
     this.legalInstrumentService.addLegalInstrument(this.registerForm.value)
     .subscribe(
       data => {

@@ -1,0 +1,41 @@
+<div class="grid text-center p-4 ">
+
+  <div class="col p-4 w-5 ">
+    <p-card class=" p-4 w-5 ">
+      <p-header class="m-2 ">
+          <h4>Reporte de solicitudes por estado</h4>
+      </p-header>
+      <p-footer>
+          <p-button label="Ver Reporte" (click)="getLegalInstumentsByState()"></p-button>
+      </p-footer>
+  </p-card>
+
+  <p-table #dt [value]="reportList" class="w-auto  " >
+    <ng-template pTemplate="header">
+        <tr>
+            <th > Cantidad</th>
+            <th > Nombre estado</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-report>
+        <tr>
+            <td >{{report.amount}}</td>
+            <td >{{report.name}}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+  </div>
+
+
+<p-card class="col p-4 w-5 ">
+  <p-header class="m-2">
+      <h4>Solicitar reporte de informacionde documentos legales</h4>
+      <h5>Recuerde que recibirá un archivo CSV en su correo electronico</h5>
+  </p-header>
+  <p-footer>
+      <p-button label="Solicitar Reporte" (click)="getLegalInstumentsByState()"></p-button>
+  </p-footer>
+</p-card>
+
+</div>
+

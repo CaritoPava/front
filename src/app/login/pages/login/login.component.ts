@@ -39,7 +39,7 @@ export class LoginComponent {
         if(data.dependencie.name === "Radicaciones"){
           this.router.navigate(['./legalInstruments/filed']);
         }
-        if(data.dependencie.name === "Administrador"){
+        if(data.dependencie.name === "Administracion"){
           this.router.navigate(['./legalInstruments/administrator']);
         }
 

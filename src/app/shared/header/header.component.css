@@ -12,5 +12,9 @@
 
   .background-primary{
     background-color: var(--primary-color);
+  }
 
+  button{
+    background: #60B064;
+    color: #878686;
   }

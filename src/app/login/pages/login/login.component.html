@@ -1,21 +1,13 @@
-<article>
+<article class="login-container">
 
-  <h1>LegalAkí</h1>
+  <div class="login">
+    <h1>LegalAkí</h1>
+    <hr>
+    <p>Escribe tu id</p>
+    <input type="number" pInputText placeholder="id" [(ngModel)]="id">
 
-  <hr>
-
-  <p>Escribe tu id</p>
-
-  <input type="number" pInputText placeholder="id" [(ngModel)]="id">
-
-
-
-
-
-  <p-button (click)="login()">Login</p-button>
-
-
-
+    <p-button (click)="login()">Login</p-button>
+  </div>
 
 
 </article>

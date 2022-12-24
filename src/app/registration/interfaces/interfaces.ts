@@ -74,6 +74,7 @@ export interface LegalInstrumentUpdate {
   basicsOfBusinessLaw?:string;
   failed?:string;
   contemptIncident?:string;
+  stateLegalInstrument?:string;
 }
 
 export interface AnswerLegalInstrument {
@@ -110,5 +111,32 @@ export interface RequestToDependencieUpdate{
   responseStatus:number;
 }
 
+export interface legalInstrumentForView {
+  id:number;
+  filing:string;
+  detail:string;
+  rights:string;
+  plaintiffsRequest:string;
+  fundamentalsMinistryLaw:string;
+  ministryRequest:string;
+  notifications:string;
+  anexos:string;
+  companyRequest: string;
+  basicsOfBusinessLaw:string;
+  failed: string;
+  contemptIncident: string;
+  isActive:string;
+  creationDate:string;
+  typeInstrument: string;
+  microenterprise: string;
+  employeeResponsible: string;
+  employeeChecked: string;
+  stateLegalInstrument: string
+}
+
+export interface ReportLegalInstrumentsByState {
+  amount:number;
+  name:string;
+}
 
 

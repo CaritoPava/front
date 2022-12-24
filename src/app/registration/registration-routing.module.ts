@@ -9,6 +9,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ViewCheckerComponent } from './pages/view-checker/view-checker.component';
 import { ViewFiledComponent } from './pages/view-filed/view-filed.component';
 import { AdministratorComponent } from './pages/administrator/administrator.component';
+import { AllLegalInstrumentsComponent } from './components/all-legal-instruments/all-legal-instruments.component';
+import { RequestReportComponent } from './components/request-report/request-report.component';
 
 
 const routes : Routes = [
@@ -23,6 +25,8 @@ const routes : Routes = [
       {path:"viewChecker/:id", component:ViewCheckerComponent},
       {path:"filed", component:ViewFiledComponent},
       {path:"administrator", component:AdministratorComponent},
+      {path:"administrator/viewAll", component:AllLegalInstrumentsComponent},
+      {path:"administrator/report", component:RequestReportComponent},
       {path:"**", redirectTo:"create"}
     ]
   }
